@@ -1,4 +1,4 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
 export const INCREMENTAR = '[CONTADOR] Incrementar';
 export const DECREMENTAR = '[CONTADOR] Decrementar';
@@ -7,33 +7,48 @@ export const DIVIDR = '[CONTADOR] Dividir';
 export const RESET = '[CONTADOR] Reset';
 
 
+export const incrementar = createAction(INCREMENTAR);
 
-export class IncrementarAction implements Action {
-    readonly type = INCREMENTAR;
-}
+// export class IncrementarAction implements Action {
+//     readonly type = INCREMENTAR;
+// }
 
-export class DecrementarAction implements Action {
-    readonly type = DECREMENTAR;
-}
+export const decrementar = createAction(DECREMENTAR);
 
-export class MultiplicarAction implements Action {
-    readonly type = MULTIPLICAR;
+// export class DecrementarAction implements Action {
+//     readonly type = DECREMENTAR;
+// }
 
-    constructor(public payload: number) {}
-}
+export const multiplicar = createAction(
+  MULTIPLICAR,
+  props<{numero: number}>()
+);
 
-export class DividirAction implements Action {
-    readonly type = DIVIDR;
-    constructor(public payload: number) {}
-}
+// export class MultiplicarAction implements Action {
+//     readonly type = MULTIPLICAR;
 
-export class ResetAction implements Action {
-    readonly type = RESET;
-}
+//     constructor(public payload: number) {}
+// }
 
-export type actions =   IncrementarAction |
-                        DecrementarAction |
-                        MultiplicarAction |
-                        DividirAction |
-                        ResetAction;
+export const dividir = createAction(
+  DIVIDR,
+  props<{numero: number}>()
+);
+
+// export class DividirAction implements Action {
+//     readonly type = DIVIDR;
+//     constructor(public payload: number) {}
+// }
+
+export const reset = createAction(RESET);
+
+// export class ResetAction implements Action {
+//     readonly type = RESET;
+// }
+
+// export type actions =   IncrementarAction |
+//                         DecrementarAction |
+//                         MultiplicarAction |
+//                         DividirAction |
+//                         ResetAction;
 
